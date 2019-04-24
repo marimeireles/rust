@@ -1379,6 +1379,9 @@ impl<'a> State<'a> {
                 self.word_space(":")?;
                 self.print_type(&ty)?;
             }
+            hir::ExprKind::Use(ref expr) => {
+                self.print_expr(expr)?;
+            }
             hir::ExprKind::If(ref test, ref blk, ref elseopt) => {
                 self.print_if(&test, &blk, elseopt.as_ref().map(|e| &**e))?;
             }
